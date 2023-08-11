@@ -6,8 +6,7 @@ void ofApp::setup(){
     ofEnableSmoothing();
     //setting for blend color
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    myImage.load("Última_Cena_-_Da_Vinci_5.jpg");
-
+    myImage.load("rikiya_icon.jpg");
 }
 
 //--------------------------------------------------------------
@@ -18,14 +17,14 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofSetColor(255, 255, 255);
-    myImage.draw(5193, 2926);
+    myImage.draw(1000, 1000);
     //bitmap information place
     ofPixels pixels = myImage.getPixels();
     //get an image width and height
     int w = myImage.getWidth();
     int h = myImage.getHeight();
-    for (int i = 0; i < w; i += 8){
-        for(int j = 0; j < h; j += 8){
+    for (int i = 0; i < w; i += 9){
+        for(int j = 0; j < h; j += 9){
             //get a pixel's RGB value
             int valueR = pixels [j * 3 * w + i * 3];
             int valueG = pixels [j * 3 * w + i * 3 + 1];
@@ -33,11 +32,11 @@ void ofApp::draw(){
             //draw a circle based on RGB value
             //pixel bright is using for circle radius
             ofSetColor(255, 0, 0, 63);
-            ofDrawCircle(440 + i, 20 + j, 10 * valueR / 255.0);
+            ofDrawCircle(360 + i, 30 + j, 15 * valueR / 255.0);
             ofSetColor(0, 255, 0, 63);
-            ofDrawCircle(440 + i, 20 + j, 10 * valueG / 255.0);
+            ofDrawCircle(360 + i, 30 + j, 15 * valueG / 255.0);
             ofSetColor(0, 0, 255, 63);
-            ofDrawCircle(440 + i, 20 + j, 10 * valueB / 255.0);
+            ofDrawCircle(360 + i, 30 + j, 15 * valueB / 255.0);
         }
     }
 
@@ -48,7 +47,7 @@ void ofApp::keyPressed(int key){
     //push x key and capture an image
     if (key == 'x'){
         //setting an image position and size
-        grabbedImage.grabScreen(5193, 10, 2926, 642);
+        grabbedImage.grabScreen(430, 10, 1080, 720);
         //save image "grabbedImage.png"
         grabbedImage.save("grabbedImage.png");
     }
